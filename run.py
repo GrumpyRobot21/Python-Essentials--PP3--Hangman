@@ -29,3 +29,85 @@ class Colortext:  # pylint: disable=too-few-public-methods
     BLUE = "\033[0;34m"
     YELLOW = "\033[1;33m"
     BOLD = "\033[1m"
+
+print("\033c", end='')
+
+name = input(Colortext.BLUE + Colortext.BOLD + "What is your name? ")
+
+print("\033c", end='')
+
+
+def start_intro():
+    """
+    Generates game options for player: intro to the game, difficulty, rules.
+    """
+    print(
+        Colortext.BOLD
+        + Colortext.YELLOW
+        + r"""
+       ==============================================
+       ==============================================
+         ||                              \ \     |  |
+         ||                               \ \    |  |
+        /==\                               \ \   |  |
+       |====|                               \ \  |  |
+       |====|                                \ \ |  |
+        \==/                                  \ \|  |
+       //  \\                                  \ |  |
+      //    \\                                  \|  |
+     //      \\                                  |  |
+     \\      //                                  |  |
+      \\    //                                   |  |
+       \\==//                                    |  |
+    """
+    )
+    print(
+        Colortext.BLUE
+        + Colortext.BOLD
+        + "Welcome " + Colortext.RED
+        + Colortext.BOLD
+        + name.upper() + Colortext.BLUE
+        + Colortext.BOLD + " to ye olde game of HANGMAN!!!!")
+    print(
+        Colortext.BLUE
+        + Colortext.BOLD
+        + "\n\nYou must carefully select letters")
+    print("in the vain hope of avoiding the gallows")
+    print(
+        "by guessing the word before it's too late!")
+    print("Can you cheat the hangman's noose in time?")
+    print(
+        Colortext.BLUE
+        + Colortext.BOLD
+        + "Find out....if you dare!")
+
+    print(
+        Colortext.BLUE
+        + Colortext.BOLD
+        + "\n\nEnter "
+        + Colortext.GREEN
+        + Colortext.BOLD
+        + "'p' "
+        + Colortext.BLUE
+        + Colortext.BOLD
+        + "to continue: "
+    )
+
+    run = input("\n")
+    if run != "p":
+        print(
+            Colortext.GREEN
+            + Colortext.BOLD
+            + "WRONG KEY!(I would go for the easy setting if I were you.)")
+        time.sleep(3)
+        print(
+            "\033c", end=""
+        )  # clears the console - \033 is the ASCII escape character.
+        start_intro()
+    else:
+        print(Colortext.YELLOW + Colortext.BOLD + "\n\nGOOD LUCK!")
+        time.sleep(2)
+        print(
+            "\033c", end=""
+        )  # clears the console - \033 is the ASCII escape character.
+        game_rules()
