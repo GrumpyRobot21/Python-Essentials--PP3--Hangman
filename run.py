@@ -249,7 +249,8 @@ def game_rules():
 
 def play_game(hang_word, lives):
     """
-    Game play function. Inspired by Kylie Ying at the following repository https://github.com/kying18/hangman/blob/master/hangman.py.
+    Game play function. Inspired by Kylie Ying at the following repository
+    https://github.com/kying18/hangman/blob/master/hangman.py.
     """
     player_letters = set(hang_word)  # creates set of random word letters
     characters = set(
