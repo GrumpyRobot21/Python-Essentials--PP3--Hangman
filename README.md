@@ -91,3 +91,28 @@ To build a terminal based game of Hangman for users to mentally challenge themse
 * Checks for invalid inputs.
 * For all user inputs, checks are run to ensure there are no invalid inputs submitted.
 * For any invalid submissions, a tailored error message is displayed and the user is prompted to input their selection again.
+
+## **Future Functionality Ideas**
+* An option for the user to input the whole word if they guess it correctly before the game is over.
+* Increase the level of difficulty by adding a third option where each turn is timed. If the timer runs down a life is lost..
+* increase number of words available in game word files.
+* Create a scoreboard with the names of the top 5 most recent, successful players. 
+
+ * [**Back to contents**](#table-of-contents)
+
+## **Testing**
+* The pep8online website, as recommended in the code institute course material,  was offline and unavailable for use at the time of submission/testing. The following steps were taken to validate and correct the python code and remove any errors. PEP8 compliance was checked with pylint within the gitpod environment. Following the correction of all line length errors, the adding of required docstrings for the method import section, corection of the 'invalid escape sequences' errors for the noose graphic at the start of the game, refactoring the while loop on line 276, and confirming that the Colortext class is storing the color styles for the text within the program, the final pylint score was 10.00, as confirmed via the screenshot below:
+
+![Pylint code check results](images/pylint-results.jpg)  
+
+* The application was also strenuously tested by manually inputting all possible iterations of user responses and measuring the outcome within the expected parameters to confirm all were functioning as they should be. This was then tested further through external users playing the game in order to check that all functionality worked appropriately. The finished version worked correctly through each user iteration without issue. (both within the IDE and the deployed environment.)
+## **Languages**
+* Python.
+## **Bugs**
+* When implementing hangman graphics, initially lives retreated from fully hanged man to nothing. I simply reversed the order of the graphics and set appropriately to solve the issue.
+* Line length was a particular headache especially with the use of a lot of text within the game. This meant carefully checking and adjusting the code particularly when using methods to customise the text. 
+* When retrieving a random word form the google sheet the selected words initially appeared in the following format - ['example'] - after searching for insight online, Stack Overflow provided a solution with the following string indexing added to the code - [2:-2] returning the selected words in the correct format for the game - example -
+* The graphical element 'the noose image' at the start of the game provided some issues regarding the error messages referring to the back slashes as 'invalid escape sequences'. This was remedied by using the raw string prefix 'r' to specify a string that uses specific characters that have a special meaning within python.
+* A missing-module-docstring error indicated that the module imports at the start of the game required an additional docstring.
+
+ * [**Back to contents**](#table-of-contents)
