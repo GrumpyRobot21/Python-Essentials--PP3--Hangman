@@ -120,19 +120,31 @@ To build a terminal based game of Hangman for users to mentally challenge themse
 ## **Deployment**
 The project was deployed onto the Render platform. This was a full time replacement hosting solution as Heroku stopped provision of free hosting from November 2022. 
 
-* Steps to deploy while hosted via the Heroku platform:
+* Steps to deploy while hosted via the Render.com platform:
   * Fork or clone this repository.
-  * Ensure the Procfile is in place.
-  * requirements.txt can be left empty as this project does not use any external libraries. 
-  * Create a new app in [Heroku](https://dashboard.heroku.com/apps).
-  * Select "New" and "Create new app".
-  * Name the new app and click "Create new app".
-  * In "Settings" select "BuildPack" and select Python and Node.js. (Python must be at the top of the list).
-  * Whilst still in "Settings", click "Reveal Config Vars" and input the folloing. KEY: PORT, VALUE: 8000. Nothing else is needed here as this project does not have any sensitive files.
-  * Click on "Deploy" and select your deploy method and repository.
-  * Click "Connect" on selected repository. 
-  * Either choose "Enable Automatic Deploys" or "Deploy Branch" in the manual deploy section. 
-  * Heroku will now deploy the site.
+  * Create a new web service in [Render](https://https://render.com).
+  * Select "New" and "Create new web service".
+  * Name the new app and complete all required configuration settings as follows.
+  * Add a Name - name setting with a meaningful name in the input
+  - Setting Name = Value
+  - Root Directory = blank
+  - Environment = Python 3
+  - Region =	Frankfurt (EU Central)
+  - Branch = main
+
+For those outside of Europe, a more localized region may be preferred.
+
+You can also deploy from a different branch if required.
+
+  * Set the Build Command - pip install -r requirements.txt && npm install
+  * Set the start Command -  node index.js
+
+  * Whilst still in "Settings", click "Advanced" then click "Add environment variable" and input the folloing. KEY: PORT, VALUE: 8000. 
+  * Back in Render click "Add secret file" This is where you will add the contents of the creds.json file. Click save when done.
+  * Click on "Auto Deploy" 
+  * Click "Create Web Service". 
+  * Wait for deployment. Watch the console for some activity, deployment can take up to 15 minutes to complete. 
+  * Render will now deploy the site.
 
    * [**Back to contents**](#table-of-contents)
 
