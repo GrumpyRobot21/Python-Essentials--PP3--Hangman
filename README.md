@@ -53,3 +53,41 @@ To build a terminal based game of Hangman for users to mentally challenge themse
 ![Design FlowChart](images/hangman_flow.jpg) 
 
  * [**Back to contents**](#table-of-contents)
+
+## **Features**
+
+ ### **Existing Features**
+* Home/Start page
+* Explains Game play to user
+* Explains how to continue
+
+![Home page](images/home_page.jpg)
+
+* Choose challenge difficulty
+* 'Lemon Squeezy' = 10 lives and smaller, easier to guess word choice.
+* 'King of the Swingers!' = 5 lives and longer, harder to guess word choice.
+
+![Choose difficulty](images/challenge_choice.jpg)
+
+* View Game Rules
+
+![View game rules](images/game_play.jpg)
+
+* A function randomly generates a word from google spreadsheets utilising google API's to access the data held on the sheets.
+* The player can not see what the word is but can see how many letters are in the word, denoted by _ _ _ _ _ 
+* Lives are shown through graphical representation of the "hangman"
+* Depending on difficilty level chosen, the user has a limited amount of lives before game ends.
+   
+![Amount of Lives](images/gameplay.jpg) 
+
+* Game Over Screens.
+* A custom comment appears for winning the game and for game over.
+![You Win!](images/win_screen.jpg) 
+![You lose!](images/lose_screen.jpg) 
+* Users can choose whether to restart the game or go back to the main menu.
+
+![Error Message](images/error.jpg)
+
+* Checks for invalid inputs.
+* For all user inputs, checks are run to ensure there are no invalid inputs submitted.
+* For any invalid submissions, a tailored error message is displayed and the user is prompted to input their selection again.
