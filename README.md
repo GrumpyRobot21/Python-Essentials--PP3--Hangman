@@ -3,7 +3,7 @@ Hangman(with added sarcasm) is written as a Python terminal game. This will run 
 
 As per the standard Hangman rules, Users try to guess the word by inputting letters until they either guess the word or they lose all of their lives and forfeit the game. The target audience is anyone who likes to challenge themselves mentally with a guessing game. 
 
-[Hangman(with added sarcasm)](https://hangman-pproj3.herokuapp.com/) - You can view the live site here. 
+[Hangman(with added sarcasm)](https://python-essentials-pp3-hangman.onrender.com/) - You can view the live site here. 
 
 ![Game-Page](images/home_page.jpg) 
 
@@ -101,7 +101,7 @@ To build a terminal based game of Hangman for users to mentally challenge themse
  * [**Back to contents**](#table-of-contents)
 
 ## **Testing**
-* The pep8online website, as recommended in the code institute course material,  was offline and unavailable for use at the time of submission/testing. The following steps were taken to validate and correct the python code and remove any errors. PEP8 compliance was checked with pylint within the gitpod environment. Following the correction of all line length errors, the adding of required docstrings for the method import section, corection of the 'invalid escape sequences' errors for the noose graphic at the start of the game, refactoring the while loop on line 276, and confirming that the Colortext class is storing the color styles for the text within the program, the final pylint score was 10.00, as confirmed via the screenshot below:
+* The pep8online website, as recommended in the code institute course material,  was offline and unavailable for use at the time of submission/testing. The following steps were taken to validate and correct the python code and remove any errors. PEP8 compliance was checked with pylint within the gitpod ide environment. Following the correction of all line length errors, the adding of required docstrings for the method import section, corection of the 'invalid escape sequences' errors for the noose graphic at the start of the game, refactoring the while loop on line 276, and confirming that the Colortext class is storing the color styles for the text within the program, the final pylint score was 10.00, as confirmed via the screenshot below:
 
 ![Pylint code check results](images/pylint-results.jpg)  
 
