@@ -118,7 +118,7 @@ To build a terminal based game of Hangman for users to mentally challenge themse
  * [**Back to contents**](#table-of-contents)
 
 ## **Deployment**
-The project was deployed onto the Heroku platform. This is a temporary solution as Heroku is set to stop provision of free hosting from November 2022. Alternative options are currently being researched. 
+The project was deployed onto the Render platform. This was a full time replacement hosting solution as Heroku stopped provision of free hosting from November 2022. 
 
 * Steps to deploy while hosted via the Heroku platform:
   * Fork or clone this repository.
