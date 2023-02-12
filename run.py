@@ -72,7 +72,7 @@ def start_intro():
     print(
         Colortext.BLUE
         + Colortext.BOLD
-        + "\n\nYou must carefully select letters")
+        + "\nYou must carefully select letters")
     print("in the vain hope of avoiding the gallows")
     print(
         "by guessing the word before it's too late!")
@@ -85,7 +85,7 @@ def start_intro():
     print(
         Colortext.BLUE
         + Colortext.BOLD
-        + "\n\nEnter "
+        + "\nEnter "
         + Colortext.GREEN
         + Colortext.BOLD
         + "'p' "
