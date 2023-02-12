@@ -465,7 +465,7 @@ def re_run():
         print(
             Colortext.BLUE
             + Colortext.BOLD
-            + "\n\nSTILL not getting the 'hang' of this are you"
+            + "\n\nSTILL not getting the 'hang' of this are you "
             + name.upper() + "?")
         print(
             Colortext.BLUE
