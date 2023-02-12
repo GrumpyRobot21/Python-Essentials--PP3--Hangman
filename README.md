@@ -116,3 +116,35 @@ To build a terminal based game of Hangman for users to mentally challenge themse
 * A missing-module-docstring error indicated that the module imports at the start of the game required an additional docstring.
 
  * [**Back to contents**](#table-of-contents)
+
+## **Deployment**
+The project was deployed onto the Heroku platform. This is a temporary solution as Heroku is set to stop provision of free hosting from November 2022. Alternative options are currently being researched. 
+
+* Steps to deploy while hosted via the Heroku platform:
+  * Fork or clone this repository.
+  * Ensure the Procfile is in place.
+  * requirements.txt can be left empty as this project does not use any external libraries. 
+  * Create a new app in [Heroku](https://dashboard.heroku.com/apps).
+  * Select "New" and "Create new app".
+  * Name the new app and click "Create new app".
+  * In "Settings" select "BuildPack" and select Python and Node.js. (Python must be at the top of the list).
+  * Whilst still in "Settings", click "Reveal Config Vars" and input the folloing. KEY: PORT, VALUE: 8000. Nothing else is needed here as this project does not have any sensitive files.
+  * Click on "Deploy" and select your deploy method and repository.
+  * Click "Connect" on selected repository. 
+  * Either choose "Enable Automatic Deploys" or "Deploy Branch" in the manual deploy section. 
+  * Heroku will now deploy the site.
+
+   * [**Back to contents**](#table-of-contents)
+
+  ## **Credits**
+ * [Code Institute](https://codeinstitute.net/) plus the extended Code Institute community via Slack for their invaluable support. How to deploy to Heroku.
+
+ * [Code Institute Tutorial Love Sandwiches](https://github.com/GrumpyRobot21/lovesandwiches) for the video lessons and discussion around using google sheets as a database plus a guide on how to add and use the appropriate google API's 
+
+ * [Stack Overflow](https://stackoverflow.com/) as the place to go for wise counsel and learn solutions to coding issues.
+
+ * [FreeCodeCamp](https://www.freecodecamp.org/) for the following python hangman tutorial where the basis of the game code was derived from - [kying18/hangman]https://github.com/kying18/hangman/blob/master/hangman.py.
+
+ * Thanks to my Mentor, Chris Quinn, for being not only a very nice chap but also providing the best kind of support and encouragement.
+
+  * [**Back to contents**](#table-of-contents)
