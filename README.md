@@ -149,11 +149,11 @@ You can also deploy from a different branch if required.
    * [**Back to contents**](#table-of-contents)
 
   ## **Credits**
- * [Code Institute](https://codeinstitute.net/) plus the extended Code Institute community via Slack for their invaluable support. How to deploy to Heroku.
+ * [Code Institute](https://codeinstitute.net/) plus the extended Code Institute community via Slack for their invaluable support. How to deploy to Render following the changes in the Heroku platform hosting options from November 2022.
 
  * [Code Institute Tutorial Love Sandwiches](https://github.com/GrumpyRobot21/lovesandwiches) for the video lessons and discussion around using google sheets as a database plus a guide on how to add and use the appropriate google API's 
 
- * [Stack Overflow](https://stackoverflow.com/) as the place to go for wise counsel and learn solutions to coding issues.
+ * [Stack Overflow](https://stackoverflow.com/) as the place to go for wise counsel and informative solutions to coding issues.
 
  * [FreeCodeCamp](https://www.freecodecamp.org/) for the following python hangman tutorial where the basis of the game code was derived from - [kying18/hangman]https://github.com/kying18/hangman/blob/master/hangman.py.
 
