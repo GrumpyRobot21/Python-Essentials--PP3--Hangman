@@ -117,12 +117,27 @@ To build a terminal based game of Hangman for users to mentally challenge themse
 * Manual Testing results
 
 | User input tested| Expected Result | Actual Result |
-| :--- | :---: | :---:
+| :--- | :--- | :---
+| Enter name at start of game  | Name displayed correctly on start game screen | Correctly displayed |
+| User prompt to press letter 'p' to continue. (Correct input entered)  | 'Good Luck' should be displayed User should be taken to the difficulty choice screen | 'Good Luck' is displayed and user is progressed to difficulty choice screen |
+| User prompt to press letter 'p' to continue. (Incorrect input entered)  | Error message should be displayed | Error message is displayed correctly |
+| User is given choice of difficulty level. Either '1' or '2'. ('1' chosen)  | Appropriate choice 'message' should be displayed and the  user will be taken to game screen where they will be given 10 lives and a 5 letter word to guess. | Correct output is displayed and correct number of lives and word length are provided for game play. |
+| User is given choice of difficulty level. Either '1' or '2'. ('2' chosen)  | Appropriate choice 'message' should be displayed and the  user will be taken to game screen where they will be given 5 lives and a 9 letter word to guess. | Correct output is displayed and correct number of lives and word length are provided for game play. |
+User has to guess a letter within the word and input the letter (Letter choice in word.) | Appropriate message should be displayed confirming choice. Letter should be displayed within the word space and the used letter should be displayed in the used letters section. User should be prompted that the letter si in the word and then continue to play | Correct output is displayed and user is informed that the letter is in the word Player is prompted to continue play. |
+| User has to guess a letter within the word and input the letter (Letter choice in word. All letters correctly guessed and lives remaining) | Appropriate message should be displayed confirming choice. Letter should be displayed within the word space and the used letter should be displayed in the used letters section. User should be prompted with win message and then taken to play again screen | Correct output is displayed and user is informed that the game has been won. Player is prompted to either play again or quit. |
+|  User has to guess a letter within the word and input the letter (Letter choice not in word)  | Appropriate message should be displayed confirming that the letter is not within the game word. The used letter should be displayed in the used letters section. The hanged man image should add another section to show that the player has lost a life. User should be prompted to contiune play, if enough lives remain. | Correct output is displayed and user is prompted to continue if enough lives remain. |
+|  User has to guess a letter within the word and input the letter (Letter choice not in word. No lives remain) | Appropriate game over message should be displayed while confirming that the letter is not within the game word. The hanged man image should be completed signifying the end of the game and that the user has lost the game. The used letter should be displayed in the used letters section. The screen should then ask the user if they wish to play again or quit. | Correct output is displayed and user is informed that the game has been lost. Player is prompted to either play again or quit. |
+|  User has to guess a letter within the word and input the letter (incorrect data provided by user. Not a letter) | Error message displayed and user prompted to continue game play | Correct error message is displayed and user is prompted to continue playing.
 | Content Cell  | Content Cell | Content Cell |
 | Content Cell  | Content Cell | Content Cell |
-
-
-
+| Content Cell  | Content Cell | Content Cell |
+| Content Cell  | Content Cell | Content Cell |
+| Content Cell  | Content Cell | Content Cell |
+| Content Cell  | Content Cell | Content Cell |
+| Content Cell  | Content Cell | Content Cell |
+| Content Cell  | Content Cell | Content Cell |
+| Content Cell  | Content Cell | Content Cell |
+| Content Cell  | Content Cell | Content Cell |
 ## **Languages**
 * Python.
 ## **Bugs**
