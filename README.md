@@ -1,5 +1,5 @@
 # **Hangman(with added sarcasm)**
-Hangman(with added sarcasm) is written as a Python terminal game. This will run on the Code Institute terminal viewer on Heroku (until the Heroku free offering cconcludes in November 2022). A suitable alternative for hosting the live app following that date is currently being researched.
+Hangman(with added sarcasm) is written as a Python terminal game. This will run on the Code Institute terminal viewer on Render.com . Render was chosen as a suitable alternative to Heroku.
 
 As per the standard Hangman rules, Users try to guess the word by inputting letters until they either guess the word or they lose all of their lives and forfeit the game. The target audience is anyone who likes to challenge themselves mentally with a guessing game. 
 
@@ -104,7 +104,7 @@ To build a terminal based game of Hangman for users to mentally challenge themse
  * [**Back to contents**](#table-of-contents)
 
 ## **Testing**
-* The pep8online website, as recommended in the code institute course material,  was offline and unavailable for use at the time of submission however the Code Institute Python Linter was availabel. The following steps were also taken to validate and correct the python code and remove any errors. PEP8 compliance was not only checked within the CI linter but also checked with pylint within the gitpod ide environment. Following the correction of all line length errors, the adding of required docstrings for the method import section, correction of the 'invalid escape sequences' errors for the noose graphic at the start of the game, refactoring the while loop on line 276, and confirming that the Colortext class is storing the color styles for the text within the program, the final pylint score was 10.00, as confirmed via the screenshot below:
+* The pep8online website, as recommended in the code institute course material,  was offline and unavailable for use at the time of submission however the Code Institute Python Linter was available. The following steps were also taken to validate and correct the python code and remove any errors. PEP8 compliance was not only checked within the CI linter but also checked with pylint within the gitpod ide environment. Following the correction of all line length errors, the adding of required docstrings for the method import section, correction of the 'invalid escape sequences' errors for the noose graphic at the start of the game, refactoring the while loop on line 276, and confirming that the Colortext class is storing the color styles for the text within the program, the final pylint score was 10.00, as confirmed via the screenshot below:
 
 ![Pylint code check results](images/pylint-results.jpg)  
 
@@ -123,21 +123,16 @@ To build a terminal based game of Hangman for users to mentally challenge themse
 | User prompt to press letter 'p' to continue. (Incorrect input entered)  | Error message should be displayed | Error message is displayed correctly |
 | User is given choice of difficulty level. Either '1' or '2'. ('1' chosen)  | Appropriate choice 'message' should be displayed and the  user will be taken to game screen where they will be given 10 lives and a 5 letter word to guess. | Correct output is displayed and correct number of lives and word length are provided for game play. |
 | User is given choice of difficulty level. Either '1' or '2'. ('2' chosen)  | Appropriate choice 'message' should be displayed and the  user will be taken to game screen where they will be given 5 lives and a 9 letter word to guess. | Correct output is displayed and correct number of lives and word length are provided for game play. |
+| User is given choice of difficulty level. Either '1' or '2'. (Incorrect input entered) | Error message should be displayed | Error message is displayed correctly |
 User has to guess a letter within the word and input the letter (Letter choice in word.) | Appropriate message should be displayed confirming choice. Letter should be displayed within the word space and the used letter should be displayed in the used letters section. User should be prompted that the letter si in the word and then continue to play | Correct output is displayed and user is informed that the letter is in the word Player is prompted to continue play. |
 | User has to guess a letter within the word and input the letter (Letter choice in word. All letters correctly guessed and lives remaining) | Appropriate message should be displayed confirming choice. Letter should be displayed within the word space and the used letter should be displayed in the used letters section. User should be prompted with win message and then taken to play again screen | Correct output is displayed and user is informed that the game has been won. Player is prompted to either play again or quit. |
-|  User has to guess a letter within the word and input the letter (Letter choice not in word)  | Appropriate message should be displayed confirming that the letter is not within the game word. The used letter should be displayed in the used letters section. The hanged man image should add another section to show that the player has lost a life. User should be prompted to contiune play, if enough lives remain. | Correct output is displayed and user is prompted to continue if enough lives remain. |
+|  User has to guess a letter within the word and input the letter (Letter choice not in word)  | Appropriate message should be displayed confirming that the letter is not within the game word. The used letter should be displayed in the used letters section. The hanged man image should add another section to show that the player has lost a life. User should be prompted to continue play, if enough lives remain. | Correct output is displayed and user is prompted to continue if enough lives remain. |
 |  User has to guess a letter within the word and input the letter (Letter choice not in word. No lives remain) | Appropriate game over message should be displayed while confirming that the letter is not within the game word. The hanged man image should be completed signifying the end of the game and that the user has lost the game. The used letter should be displayed in the used letters section. The screen should then ask the user if they wish to play again or quit. | Correct output is displayed and user is informed that the game has been lost. Player is prompted to either play again or quit. |
 |  User has to guess a letter within the word and input the letter (incorrect data provided by user. Not a letter) | Error message displayed and user prompted to continue game play | Correct error message is displayed and user is prompted to continue playing.
-| Content Cell  | Content Cell | Content Cell |
-| Content Cell  | Content Cell | Content Cell |
-| Content Cell  | Content Cell | Content Cell |
-| Content Cell  | Content Cell | Content Cell |
-| Content Cell  | Content Cell | Content Cell |
-| Content Cell  | Content Cell | Content Cell |
-| Content Cell  | Content Cell | Content Cell |
-| Content Cell  | Content Cell | Content Cell |
-| Content Cell  | Content Cell | Content Cell |
-| Content Cell  | Content Cell | Content Cell |
+|  User has to input either 'y' to play agin or 'n' to reset the game ('y' chosen)  | Continuation message should be displayed and then user should be taken back to difficulty level selection screen | Correct message is displayed and is displayed and user is progressed to difficulty choice screen .
+|  User has to input either 'y' to play agin or 'n' to reset the game ('n' chosen)  | Conciliatory message should be displayed and then user should be taken back to start of game application | Correct message is displayed and start of application screen displayed.
+|  User has to input either 'y' to play agin or 'n' to reset the game (Incorrect input entered) | Error message should be displayed | Error message is displayed correctly |
+
 ## **Languages**
 * Python.
 ## **Bugs**
