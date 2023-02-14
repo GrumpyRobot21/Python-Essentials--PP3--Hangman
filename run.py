@@ -4,8 +4,6 @@
 import string  # ascii alphabet function
 import time  # time sleep function
 import random  # random selection module
-import os
-import sys
 import pyfiglet  # big letter graphics module
 import gspread  # Imports gspread library.
 from google.oauth2.service_account import Credentials
@@ -463,7 +461,7 @@ def re_run():
         print(
             "\033c", end=""
         )  # clears the console - \033 is the ASCII escape character.
-        restart()
+        main()
     else:  # Error message for incorrect choice.
         print(
             Colortext.BLUE
@@ -479,12 +477,6 @@ def re_run():
             "\033c", end=""
         )  # clears the console - \033 s the ASCII escape character.
         re_run()
-
-
-def restart():
-    """Restarts the game.
-    """
-    os.execl(sys.executable, os.path.abspath(__file__), *sys.argv)
 
 
 def player_lives(lives):
