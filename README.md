@@ -184,6 +184,6 @@ You can also deploy from a different branch if required.
 
  * [FreeCodeCamp](https://www.freecodecamp.org/) for the following python hangman tutorial where the basis of the game code was derived from - [kying18/hangman]https://github.com/kying18/hangman/blob/master/hangman.py.
 
- * Thanks to my Mentor, Chris Quinn, for being not only a very nice chap but also providing the best kind of support and encouragement.
+ * Thanks to my Mentor, Marcel, providing support and encouragement.
 
   * [**Back to contents**](#table-of-contents)
