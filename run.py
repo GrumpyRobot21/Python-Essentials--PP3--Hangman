@@ -31,11 +31,16 @@ class Colortext:  # pylint: disable=too-few-public-methods
     BOLD = "\033[1m"
 
 
-print("\033c", end='')
+name = ""
+def ask_name():
 
-name = input(Colortext.BLUE + Colortext.BOLD + "What is your name? ")
+    print("\033c", end='')
 
-print("\033c", end='')
+    name = input(Colortext.BLUE + Colortext.BOLD + "What is your name? ")
+
+    print("\033c", end='')
+
+    start_intro()
 
 
 def start_intro():
@@ -631,7 +636,7 @@ def main():
     """
        Game starts
        """
-    start_intro()
+    ask_name()
 
 
 main()
