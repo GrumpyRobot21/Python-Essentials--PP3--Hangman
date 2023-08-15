@@ -61,7 +61,9 @@ def start_intro():
        \\\\==//                                    |  |
     """
     print(intro_art)
-    welcome_message = f"{Colortext.BLUE}{Colortext.BOLD}Welcome {Colortext.RED}{Colortext.BOLD}{name.upper()}{Colortext.BLUE}{Colortext.BOLD} to ye olde game of HANGMAN!!!!"
+    base_color = f"{Colortext.BLUE}{Colortext.BOLD}"
+    name_color = f"{Colortext.RED}{Colortext.BOLD}{name.upper()}"
+    welcome_message = base_color + "Welcome " + name_color + base_color + " to ye olde game of HANGMAN!!!!"
     print(welcome_message)
     instructions = f"""
 {Colortext.BLUE}{Colortext.BOLD}
@@ -77,8 +79,10 @@ Enter {Colortext.GREEN}{Colortext.BOLD}'p'{Colortext.BLUE}{Colortext.BOLD} to co
 
     run = input("\n")
     if run != "p":
-        wrong_key_message = f"{Colortext.GREEN}{Colortext.BOLD}WRONG KEY!(I would go for the easy setting if I were you.)"
-        print(wrong_key_message)
+        base_color = f"{Colortext.GREEN}{Colortext.BOLD}"
+        wrong_key_message_part1 = f"{base_color}WRONG KEY!"
+        wrong_key_message_part2 = "(I would go for the easy setting if I were you.)"
+        print(wrong_key_message_part1 + wrong_key_message_part2)
         time.sleep(3)
         print("\033c", end="")
         start_intro()
@@ -115,15 +119,22 @@ def game_rules():
     """
     Rules for gameplay and player difficulty selection.
     """
-    print(f"{Colortext.RED + Colortext.BOLD}Select your difficulty level from the choices below")
-    print(f"{Colortext.RED + Colortext.BOLD}and the challenge will begin.")
-    print(f"{Colortext.RED + Colortext.BOLD}See you at the end .......of the rope!")
-    print(f"\nEnter{Colortext.BLUE + Colortext.BOLD} '1' {Colortext.RED + Colortext.BOLD}for difficulty level - "
-          f"{Colortext.YELLOW}'Lemon Squeezy'{Colortext.RED + Colortext.BOLD}\nalso known as: "
-          f"{Colortext.YELLOW}'I can see the pub from up here!' \n\n{Colortext.RED + Colortext.BOLD}Enter"
-          f"{Colortext.BLUE + Colortext.BOLD} '2' {Colortext.RED + Colortext.BOLD}for difficulty level - "
-          f"{Colortext.YELLOW}'King of the Swingers!' {Colortext.RED + Colortext.BOLD}\nalso known as:"
-          f"{Colortext.YELLOW} 'That's a smidge on the tight side, cough cough!'")
+    red_bold = f"{Colortext.RED + Colortext.BOLD}"
+    blue_bold = f"{Colortext.BLUE + Colortext.BOLD}"
+    yellow = f"{Colortext.YELLOW}"
+    print(f"{red_bold}Select your difficulty level from the choices below")
+    print(f"{red_bold}and the challenge will begin.")
+    print(f"{red_bold}See you at the end .......of the rope!")
+
+    level1_part1 = f"\nEnter{blue_bold} '1' {red_bold}for difficulty level - "
+    level1_part2 = f"{yellow}'Lemon Squeezy'{red_bold}\nalso known as: "
+    level1_part3 = f"{yellow}'I can see the pub from up here!'"
+
+    level2_part1 = f"\nEnter{blue_bold} '2' {red_bold}for difficulty level - "
+    level2_part2 = f"{yellow}'King of the Swingers!' {red_bold}\nalso known as:"
+    level2_part3 = f"{yellow} 'That's a smidge on the tight side, cough cough!'"
+    print(level1_part1 + level1_part2 + level1_part3)
+    print(level2_part1 + level2_part2 + level2_part3)
 
     choose = input("\n")
 
@@ -245,17 +256,17 @@ def end_game_message(color1, color2, word):
     """
     print(color1 + player_lives(0))
     print_color_text(
-        color2, Colortext.BOLD, 
+        color2, Colortext.BOLD,
         f"\nOUCH!! I bet that stings a bit {name.upper()}!"
     )
     print_color_text(
-        color2, Colortext.BOLD, 
+        color2, Colortext.BOLD,
         ("You didn't beat the hangman this time around,"
          "\nbut in the wonderful realm of the digital world"
          "\nyou may get the chance to play again...")
     )
     print_color_text(
-        color2, Colortext.BOLD, 
+        color2, Colortext.BOLD,
         "\nif you've the 'neck' for it that is."
     )
     print(f"\nBy the way, the word you missed was: {Colortext.YELLOW + word}")
@@ -268,7 +279,7 @@ def victory_message(color1, color2):
     """
     print(color1 + player_lives(0))
     print_color_text(
-        color2, Colortext.BOLD, 
+        color2, Colortext.BOLD,
         f"\nWell done {name.upper()}!! "
         "(You just cost me a fiver though...)"
         "\nI'll bet you fancy another try now?"
@@ -281,7 +292,7 @@ def re_run():
     Option to replay game function
     """
     again = pyfiglet.figlet_format(f"Try Again! \n{name.upper()}")
-    print(f"{Colortext.RED}{Colortext.BOLD}{again}")    
+    print(f"{Colortext.RED}{Colortext.BOLD}{again}")
     msg_part1 = (f"{Colortext.GREEN}{Colortext.BOLD}"
                  "\n\n(Well, we had to include the statutory")
     msg_part2 = (f"{Colortext.YELLOW}{Colortext.BOLD}'BIG LETTERS'"
