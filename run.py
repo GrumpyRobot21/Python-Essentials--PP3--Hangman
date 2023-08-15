@@ -1,13 +1,10 @@
-"""
- Import python modules
-"""
-import string  # ascii alphabet function
-import time  # time sleep function
-import random  # random selection module
-import pyfiglet  # big letter graphics module
-import gspread  # Imports gspread library.
+import string
+import time
+import random
+import pyfiglet
+
+import gspread
 from google.oauth2.service_account import Credentials
-# Imports credentials class.
 
 
 SCOPE = [
@@ -35,8 +32,11 @@ name = " "
 
 
 def ask_name():
+    """user name request function"""
 
     print("\033c", end='')
+
+    global name
 
     name = input(Colortext.BLUE + Colortext.BOLD + "What is your name? ")
 
