@@ -26,6 +26,7 @@ class Colortext:
     YELLOW = "\033[1;33m"
     BOLD = "\033[1m"
 
+
 name = " "
 
 
@@ -33,7 +34,7 @@ def ask_name():
     """Request user's name and initiate game intro."""
     print("\033c", end='')
 
-    global name # name variable given deliberate global scope for access in game
+    global name  # name variable given deliberate global scope for access in game
     name = input(f"{Colortext.BLUE}{Colortext.BOLD}What is your name? ")
 
     print("\033c", end='')
@@ -106,9 +107,8 @@ def hang_word_hard():
     hardwords = SHEET.worksheet('hardwords')
     hardchoice = hardwords.get_all_values()
     hard = random.choice(hardchoice)
-    choice2 = str(hard)[2:-2] # removes brackets & quote marks
-    return choice2.upper() # returns random game word in upper case
-
+    choice2 = str(hard)[2:-2]  # removes brackets & quote marks
+    return choice2.upper()  # returns random game word in upper case
 
 
 def game_rules():
@@ -167,46 +167,59 @@ def print_messages(color_text, messages):
 
 def play_game(hang_word, lives):
     """
-    Game play function. Inspired by Kylie Ying at the following repository
+    Game play function. Inspired by Kylie Ying at the following repository:
     https://github.com/kying18/hangman/blob/master/hangman.py.
     """
-    player_letters = set(hang_word)  # creates set of random word letters
-    characters = set(string.ascii_uppercase)  # Letters pool for user and word choices
-    used = set()  # letters that have been used in the game
+    player_letters = set(hang_word)
+    characters = set(string.ascii_uppercase)
+    used = set()
 
-    print_color_text(Colortext.GREEN, Colortext.BOLD, "Now we get to test your nerve!!!")
-    print_color_text(Colortext.GREEN, Colortext.BOLD, "Guess the word and escape the noose this day...!")
-    print(f"\nYou have {lives} lives left before the big drop...\nDon't lose them all at once!")
+    intro_msg1 = "Now we get to test your nerve!!!"
+    intro_msg2 = "Guess the word and escape the noose this day...!"
+    intro_msg3 = (f"\nYou have {lives} lives left before the big drop..."
+                  "\nDon't lose them all at once!")
+
+    print_color_text(Colortext.GREEN, Colortext.BOLD, intro_msg1)
+    print_color_text(Colortext.GREEN, Colortext.BOLD, intro_msg2)
+    print(intro_msg3)
 
     while player_letters and lives > 0:
         print(Colortext.RED + player_lives(lives))
 
         check_list = [letter if letter in used else "-" for letter in hang_word]
-        print_color_text(Colortext.GREEN, Colortext.BOLD, 
-                        f"\nYour word to guess for this round is: {' '.join(check_list)}")
-        print(f"\nYou have already used these letters: {' '.join(used)}")
+        word_msg = (f"\nYour word to guess for this round is: "
+                    f"{' '.join(check_list)}")
+        used_msg = f"\nYou have already used these letters: {' '.join(used)}"
+
+        print_color_text(Colortext.GREEN, Colortext.BOLD, word_msg)
+        print(used_msg)
 
         user_guess = input("\nWhat's your best guess? \n").upper()
+
         if user_guess in characters - used:
             used.add(user_guess)
             if user_guess in player_letters:
+                success_msg = "Phew! That WAS a lucky guess! It's in there!"
                 player_letters.remove(user_guess)
-                print_color_text(Colortext.YELLOW, Colortext.BOLD, 
-                                "Phew! That WAS a lucky guess! It's in there!")
+                print_color_text(Colortext.YELLOW, Colortext.BOLD, success_msg)
                 time.sleep(3)
             else:
                 lives -= 1
-                print_color_text(Colortext.YELLOW, Colortext.BOLD,
-                                f"\nOh dear, oh dear. One step closer to the drop!..\n{user_guess} 'ain't in the word my friend!")
+                fail_msg = (f"\nOh dear, oh dear. One step closer to the drop!"
+                            f"\n{user_guess} 'ain't in the word my friend!")
+                print_color_text(Colortext.YELLOW, Colortext.BOLD, fail_msg)
                 time.sleep(4)
         elif user_guess in used:
-            print_color_text(Colortext.YELLOW, Colortext.BOLD, 
-                            "\nTrying to pull a fast one are you?\nYou can't use the same letter twice!")
+            dup_msg = ("\nTrying to pull a fast one are you?"
+                       "\nYou can't use the same letter twice!")
+            print_color_text(Colortext.YELLOW, Colortext.BOLD, dup_msg)
             time.sleep(3)
         else:
-            print_color_text(Colortext.YELLOW, Colortext.BOLD, 
-                            f"\nHehehe, Time to make better choices {name.upper()}.\n\nPreferably one's you haven't made already....")
+            invalid_choice_msg = (f"\nHehehe, Time to make better choices {name.upper()}."
+                                  "\n\nPreferably ones you haven't made already....")
+            print_color_text(Colortext.YELLOW, Colortext.BOLD, invalid_choice_msg)
             time.sleep(4)
+
         print("\033c", end="")
 
     if lives == 0:
@@ -216,6 +229,7 @@ def play_game(hang_word, lives):
 
     print("\033c", end="")
     re_run()
+
 
 
 def print_color_text(color1, color2, message):
@@ -268,48 +282,47 @@ def re_run():
     """
     again = pyfiglet.figlet_format(f"Try Again! \n{name.upper()}")
     print(f"{Colortext.RED}{Colortext.BOLD}{again}")
-    print(
-        f"{Colortext.GREEN}{Colortext.BOLD}"
-        "\n\n(Well, we had to include the statutory "
-        f"{Colortext.YELLOW}{Colortext.BOLD}'BIG LETTERS'{Colortext.GREEN}{Colortext.BOLD} at some point..)"
-        "\n\nNow, to give this fabulously designed game another shot"
-        f"\n\nEnter {Colortext.YELLOW}{Colortext.BOLD}'y'{Colortext.GREEN}{Colortext.BOLD} for 'Lets do this!'"
-        f" or..\n\nEnter {Colortext.YELLOW}{Colortext.BOLD}'n'{Colortext.GREEN}{Colortext.BOLD} for 'I'm a big Jessie'"
-    )
+    
+    msg_part1 = (f"{Colortext.GREEN}{Colortext.BOLD}"
+                 "\n\n(Well, we had to include the statutory")
+    msg_part2 = (f"{Colortext.YELLOW}{Colortext.BOLD}'BIG LETTERS'{Colortext.GREEN}{Colortext.BOLD}"
+                 " at some point..)")
+    msg_part3 = ("\n\nNow, to give this fabulously designed game another shot"
+                 f"\n\nEnter {Colortext.YELLOW}{Colortext.BOLD}'y'{Colortext.GREEN}{Colortext.BOLD} for 'Lets do this!'"
+                 f" or..\n\nEnter {Colortext.YELLOW}{Colortext.BOLD}'n'{Colortext.GREEN}{Colortext.BOLD} for 'I'm a big Jessie'")
+    
+    print(msg_part1 + msg_part2 + msg_part3)
 
     choice = input("\n")
 
-    if choice == "y":  # Player elects to play again.
-        print(
-            f"{Colortext.RED}{Colortext.BOLD}"
-            "\n\nIf at first you don't succeed blah blah etc.\n\n"
-            "At least I get a chance to place another little bet!"
-        )
+    if choice == "y":
+        msg_play_again = (f"{Colortext.RED}{Colortext.BOLD}"
+                          "\n\nIf at first you don't succeed blah blah etc.\n\n"
+                          "At least I get a chance to place another little bet!")
+        print(msg_play_again)
         time.sleep(6)
-        print("\033c", end="")  # Clears the console.
+        print("\033c", end="")
         game_rules()
 
-    elif choice == "n":  # Player chooses not to play again.
-        print(
-            f"{Colortext.RED}{Colortext.BOLD}"
-            f"\n\nNever mind {name.upper()}, I understand."
-            "\n\nOnce bitten, twice shy."
-            "\n\nIt takes a strong backbone to play "
-            "this game more than once."
-            "\n\nThat's ok if you don't have what it takes...."
-        )
+    elif choice == "n":
+        msg_not_play = (f"{Colortext.RED}{Colortext.BOLD}"
+                        f"\n\nNever mind {name.upper()}, I understand."
+                        "\n\nOnce bitten, twice shy."
+                        "\n\nIt takes a strong backbone to play "
+                        "this game more than once."
+                        "\n\nThat's ok if you don't have what it takes....")
+        print(msg_not_play)
         time.sleep(6)
-        print("\033c", end="")  # Clears the console.
+        print("\033c", end="")
         main()
 
-    else:  # Error message for incorrect choice.
-        print(
-            f"{Colortext.BLUE}{Colortext.BOLD}"
-            f"\n\nSTILL not getting the 'hang' of this are you {name.upper()}?"
-            "\n\nLet's give this one more go shall we?"
-        )
+    else:
+        error_msg = (f"{Colortext.BLUE}{Colortext.BOLD}"
+                     f"\n\nSTILL not getting the 'hang' of this are you {name.upper()}?"
+                     "\n\nLet's give this one more go shall we?")
+        print(error_msg)
         time.sleep(4)
-        print("\033c", end="")  # Clears the console.
+        print("\033c", end="")
         re_run()
 
 
