@@ -1,4 +1,4 @@
-"""Module to interact with a Hangman game using Google Spreadsheets."""
+"""Importing modules for Hangman Game."""
 import string
 import time
 import random
@@ -88,140 +88,82 @@ Enter {Colortext.GREEN}{Colortext.BOLD}'p'{Colortext.BLUE}{Colortext.BOLD} to co
         game_rules()
 
 
-# Note: The game_rules() function isn't provided, but I'm assuming it's part of your code elsewhere.
+def hang_word_easy():
+    """
+    Retrieves randomly chosen word from the easyword Google sheet.
+    """
+    easywords = SHEET.worksheet('easywords')
+    easychoice = easywords.get_all_values()
+    easy = random.choice(easychoice)
+    choice1 = str(easy)[2:-2]  # removes brackets & quote marks
+    return choice1.upper()  # returns random game word in upper case
+
+
+def hang_word_hard():
+    """
+    Retrieves randomly chosen word from the hardword Google sheet.
+    """
+    hardwords = SHEET.worksheet('hardwords')
+    hardchoice = hardwords.get_all_values()
+    hard = random.choice(hardchoice)
+    choice2 = str(hard)[2:-2] # removes brackets & quote marks
+    return choice2.upper() # returns random game word in upper case
+
 
 
 def game_rules():
     """
-    Rules for gameplay and player difficulty selection
+    Rules for gameplay and player difficulty selection.
     """
-    print(
-        Colortext.RED
-        + Colortext.BOLD
-        + "Select your difficulty level from the choices below")
-    print(
-        Colortext.RED
-        + Colortext.BOLD
-        + "and the challenge will begin.")
-    print(
-        Colortext.RED
-        + Colortext.BOLD
-        + "See you at the end .......of the rope!")
-    print("\nEnter"
-          + Colortext.BLUE
-          + Colortext.BOLD
-          + " '1' "
-          + Colortext.RED
-          + Colortext.BOLD
-          + "for difficulty level - "
-          + Colortext.YELLOW
-          + "'Lemon Squeezy' "
-          + Colortext.RED
-          + Colortext.BOLD
-          + "\nalso known as: "
-          + Colortext.YELLOW
-          + "'I can see the pub from up here!' \n\n"
-          + Colortext.RED
-          + Colortext.BOLD
-          + "Enter"
-          + Colortext.BLUE
-          + Colortext.BOLD
-          + " '2' "
-          + Colortext.RED
-          + Colortext.BOLD
-          + "for difficulty level - "
-          + Colortext.YELLOW
-          + "'King of the Swingers!' "
-          + Colortext.RED
-          + Colortext.BOLD
-          + "\nalso known as:"
-          + Colortext.YELLOW
-          + " 'That's a smidge on the tight side, cough cough!'")
+    print(f"{Colortext.RED + Colortext.BOLD}Select your difficulty level from the choices below")
+    print(f"{Colortext.RED + Colortext.BOLD}and the challenge will begin.")
+    print(f"{Colortext.RED + Colortext.BOLD}See you at the end .......of the rope!")
+    print(f"\nEnter{Colortext.BLUE + Colortext.BOLD} '1' {Colortext.RED + Colortext.BOLD}for difficulty level - "
+          f"{Colortext.YELLOW}'Lemon Squeezy'{Colortext.RED + Colortext.BOLD}\nalso known as: "
+          f"{Colortext.YELLOW}'I can see the pub from up here!' \n\n{Colortext.RED + Colortext.BOLD}Enter"
+          f"{Colortext.BLUE + Colortext.BOLD} '2' {Colortext.RED + Colortext.BOLD}for difficulty level - "
+          f"{Colortext.YELLOW}'King of the Swingers!' {Colortext.RED + Colortext.BOLD}\nalso known as:"
+          f"{Colortext.YELLOW} 'That's a smidge on the tight side, cough cough!'")
 
     choose = input("\n")
 
-    if choose == "1":  # Player selects the easiest challenge setting.
-        lives = 10  # given 10 lives to start game with
-
-        def hang_word_easy():
-            """
-            retrieves randonly chosen word from the easyword google sheet
-            """
-            easywords = SHEET.worksheet('easywords')
-            easychoice = easywords.get_all_values()
-            easy = random.choice(easychoice)
-            choice1 = str(easy)[2:-2]  # removes brackets & quote marks
-            return choice1.upper()  # returns random game word in upper case
-
+    if choose == "1":
+        lives = 10
         hang_word = hang_word_easy()
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "\n\nPlaying it safe eh " + name.upper() +
-            "? or maybe prolonging the agony.....")
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "They do say that waiting is the worst!!")
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "\n\n All that nervous anticipation.....! ")
-        time.sleep(5)  # 5 second delay
-        print(
-            "\033c", end=""
-        )  # clears the console - \033 is the ASCII escape character.
-        play_game(hang_word, lives)
-    elif choose == "2":  # Player selects difficult challenge setting.
-        lives = 5  # only given 5 lives to start game with
+        print_messages(Colortext.GREEN + Colortext.BOLD, [
+            f"\n\nPlaying it safe eh {name.upper()}? or maybe prolonging the agony.....",
+            "They do say that waiting is the worst!!",
+            "\n\n All that nervous anticipation.....!"
+        ])
 
-        def hang_word_hard():
-            """
-            retrieves randonly chosen word from the hardword google sheet
-            """
-            hardwords = SHEET.worksheet('hardwords')
-            hardchoice = hardwords.get_all_values()
-            hard = random.choice(hardchoice)
-            choice2 = str(hard)[2:-2]
-            return choice2.upper()
-
+    elif choose == "2":
+        lives = 5
         hang_word = hang_word_hard()
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "\n\nOoh " + name.upper() + ", you're feeling brave aren't you!")
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "\n\nThis won't take long!")
-        time.sleep(5)  # 5 second delay
-        print(
-            "\033c", end=""
-        )  # clears the console - \033 is the ASCII escape character.
-        play_game(hang_word, lives)
-    else:  # Error message for incorrect choice.
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "\n\nNot getting the 'hang' of this are you " + name.upper() +
-            "?")
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "(do you see what I did there?).")
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "\n\nLet's try this again...")
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "\n\nChoose either 1 or 2 to get this show on the road!")
-        time.sleep(5)  # 5 second delay
-        print(
-            "\033c", end=""
-        )  # clears the console - \033 s the ASCII escape character.
+        print_messages(Colortext.GREEN + Colortext.BOLD, [
+            f"\n\nOoh {name.upper()}, you're feeling brave aren't you!",
+            "\n\nThis won't take long!"
+        ])
+
+    else:
+        print_messages(Colortext.GREEN + Colortext.BOLD, [
+            f"\n\nNot getting the 'hang' of this are you {name.upper()}?",
+            "(do you see what I did there?).",
+            "\n\nLet's try this again...",
+            "\n\nChoose either 1 or 2 to get this show on the road!"
+        ])
         game_rules()
+
+    time.sleep(5)
+    print("\033c", end="")
+    if choose in ['1', '2']:
+        play_game(hang_word, lives)
+
+
+def print_messages(color_text, messages):
+    """helper function to reduce repetition of code"""
+    for message in messages:
+        print(color_text + message)
+
 
 def play_game(hang_word, lives):
     """
