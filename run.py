@@ -63,7 +63,9 @@ def start_intro():
     print(intro_art)
     base_color = f"{Colortext.BLUE}{Colortext.BOLD}"
     name_color = f"{Colortext.RED}{Colortext.BOLD}{name.upper()}"
-    welcome_message = base_color + "Welcome " + name_color + base_color + " to ye olde game of HANGMAN!!!!"
+    welcome_part1 = base_color + "Welcome " + name_color
+    welcome_part2 = base_color + " to ye olde game of HANGMAN!!!!"
+    welcome_message = welcome_part1 + welcome_part2
     print(welcome_message)
     instructions = f"""
 {Colortext.BLUE}{Colortext.BOLD}
@@ -242,7 +244,6 @@ def play_game(hang_word, lives):
     re_run()
 
 
-
 def print_color_text(color1, color2, message):
     """
     Print a message with specified text and background colors.
@@ -304,7 +305,6 @@ def re_run():
                   f"{Colortext.GREEN}{Colortext.BOLD} for 'I'm a big Jessie'")
     print(msg_part1 + msg_part2 + msg_part3a + msg_part3b + msg_part3c)
 
-
     choice = input("\n")
 
     if choice == "y":
@@ -338,12 +338,10 @@ def re_run():
         re_run()
 
 
-
 def player_lives(lives):
     """
     Remaining player lives with hangman game graphic
     """
-
     player_live = [
         """
     ______________
