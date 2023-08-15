@@ -31,7 +31,9 @@ class Colortext:  # pylint: disable=too-few-public-methods
     BOLD = "\033[1m"
 
 
-name = ""
+name = " "
+
+
 def ask_name():
 
     print("\033c", end='')
