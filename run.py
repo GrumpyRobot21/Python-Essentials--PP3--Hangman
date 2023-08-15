@@ -1,11 +1,10 @@
+"""Module to interact with a Hangman game using Google Spreadsheets."""
 import string
 import time
 import random
 import pyfiglet
-
 import gspread
 from google.oauth2.service_account import Credentials
-
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -19,106 +18,77 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman')
 
 
-class Colortext:  # pylint: disable=too-few-public-methods
-    """adds text color classes for game"""
+class Colortext:
+    """Class for text color definitions used in the game."""
     RED = "\033[0;31m"
     GREEN = "\033[0;32m"
     BLUE = "\033[0;34m"
     YELLOW = "\033[1;33m"
     BOLD = "\033[1m"
 
-
 name = " "
 
 
 def ask_name():
-    """user name request function"""
-
+    """Request user's name and initiate game intro."""
     print("\033c", end='')
 
     global name
-
-    name = input(Colortext.BLUE + Colortext.BOLD + "What is your name? ")
+    name = input(f"{Colortext.BLUE}{Colortext.BOLD}What is your name? ")
 
     print("\033c", end='')
-
     start_intro()
 
 
 def start_intro():
-    """
-    Generates game options for player: intro to the game, difficulty, rules.
-    """
-    print(
-        Colortext.BOLD
-        + Colortext.YELLOW
-        + r"""
+    """Generates game options for player: intro to the game, difficulty, rules."""
+    intro_art = f"""
+{Colortext.BOLD}{Colortext.YELLOW}
        ==============================================
        ==============================================
-         ||                              \ \     |  |
-         ||                               \ \    |  |
-        /==\                               \ \   |  |
-       |====|                               \ \  |  |
-       |====|                                \ \ |  |
-        \==/                                  \ \|  |
-       //  \\                                  \ |  |
-      //    \\                                  \|  |
-     //      \\                                  |  |
-     \\      //                                  |  |
-      \\    //                                   |  |
-       \\==//                                    |  |
+         ||                              \\ \\     |  |
+         ||                               \\ \\    |  |
+        /==\\                               \\ \\   |  |
+       |====|                               \\ \\  |  |
+       |====|                                \\ \\ |  |
+        \\==/                                  \\ \\|  |
+       //  \\\\                                  \\ |  |
+      //    \\\\                                  \\|  |
+     //      \\\\                                  |  |
+     \\\\      //                                  |  |
+      \\\\    //                                   |  |
+       \\\\==//                                    |  |
     """
-    )
-    print(
-        Colortext.BLUE
-        + Colortext.BOLD
-        + "Welcome " + Colortext.RED
-        + Colortext.BOLD
-        + name.upper() + Colortext.BLUE
-        + Colortext.BOLD + " to ye olde game of HANGMAN!!!!")
-    print(
-        Colortext.BLUE
-        + Colortext.BOLD
-        + "\nYou must carefully select letters")
-    print("in the vain hope of avoiding the gallows")
-    print(
-        "by guessing the word before it's too late!")
-    print("Can you cheat the hangman's noose in time?")
-    print(
-        Colortext.BLUE
-        + Colortext.BOLD
-        + "Find out....if you dare!")
+    print(intro_art)
+    welcome_message = f"{Colortext.BLUE}{Colortext.BOLD}Welcome {Colortext.RED}{Colortext.BOLD}{name.upper()}{Colortext.BLUE}{Colortext.BOLD} to ye olde game of HANGMAN!!!!"
+    print(welcome_message)
+    instructions = f"""
+{Colortext.BLUE}{Colortext.BOLD}
+You must carefully select letters
+in the vain hope of avoiding the gallows
+by guessing the word before it's too late!
+Can you cheat the hangman's noose in time?
+Find out....if you dare!
 
-    print(
-        Colortext.BLUE
-        + Colortext.BOLD
-        + "\nEnter "
-        + Colortext.GREEN
-        + Colortext.BOLD
-        + "'p' "
-        + Colortext.BLUE
-        + Colortext.BOLD
-        + "to continue: "
-    )
+Enter {Colortext.GREEN}{Colortext.BOLD}'p'{Colortext.BLUE}{Colortext.BOLD} to continue:
+"""
+    print(instructions)
 
     run = input("\n")
     if run != "p":
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "WRONG KEY!(I would go for the easy setting if I were you.)")
+        wrong_key_message = f"{Colortext.GREEN}{Colortext.BOLD}WRONG KEY!(I would go for the easy setting if I were you.)"
+        print(wrong_key_message)
         time.sleep(3)
-        print(
-            "\033c", end=""
-        )  # clears the console - \033 is the ASCII escape character.
+        print("\033c", end="")
         start_intro()
     else:
-        print(Colortext.YELLOW + Colortext.BOLD + "\n\nGOOD LUCK!")
+        print(f"{Colortext.YELLOW}{Colortext.BOLD}\n\nGOOD LUCK!")
         time.sleep(2)
-        print(
-            "\033c", end=""
-        )  # clears the console - \033 is the ASCII escape character.
+        print("\033c", end="")
         game_rules()
+
+
+# Note: The game_rules() function isn't provided, but I'm assuming it's part of your code elsewhere.
 
 
 def game_rules():
