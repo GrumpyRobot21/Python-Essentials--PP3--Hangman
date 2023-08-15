@@ -253,148 +253,101 @@ def game_rules():
         )  # clears the console - \033 s the ASCII escape character.
         game_rules()
 
-
 def play_game(hang_word, lives):
     """
     Game play function. Inspired by Kylie Ying at the following repository
     https://github.com/kying18/hangman/blob/master/hangman.py.
     """
     player_letters = set(hang_word)  # creates set of random word letters
-    characters = set(
-        string.ascii_uppercase
-    )  # Ascii letters pool for user and word letter choices (in uppercase)
-    used = (
-        set()
-    )  # creates a set of the letters that have been used in the game
+    characters = set(string.ascii_uppercase)  # Letters pool for user and word choices
+    used = set()  # letters that have been used in the game
 
-    print(
-        Colortext.GREEN
-        + Colortext.BOLD
-        + "Now we get to test your nerve!!!")
-    print(
-        Colortext.GREEN
-        + Colortext.BOLD
-        + "Guess the word and escape the noose this day...!")
-    print(
-        "\nYou have",
-        lives,
-        "lives left before the big drop...\nDon't lose them all at once!",
-    )
+    print_color_text(Colortext.GREEN, Colortext.BOLD, "Now we get to test your nerve!!!")
+    print_color_text(Colortext.GREEN, Colortext.BOLD, "Guess the word and escape the noose this day...!")
+    print(f"\nYou have {lives} lives left before the big drop...\nDon't lose them all at once!")
 
     while player_letters and lives > 0:
-        # loops user letter guesses
-        print(
-            Colortext.RED + player_lives(lives)
-        )  # Prints player hangman 'life' graphic
-        check_list = [
-            letter if letter in used else "-" for letter in hang_word
-        ]  # Comprehension substitutes dashes for the letters
-        # and checks to see if letters have been used.
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "\nYour word to guess for this round is: ",
-            " ".join(check_list),
-        )  # presents list of dashes for randomly chosen game word
-        print(
-            "\nYou have already used these letters: ",
-            " ".join(used),
-        )
+        print(Colortext.RED + player_lives(lives))
+
+        check_list = [letter if letter in used else "-" for letter in hang_word]
+        print_color_text(Colortext.GREEN, Colortext.BOLD, 
+                        f"\nYour word to guess for this round is: {' '.join(check_list)}")
+        print(f"\nYou have already used these letters: {' '.join(used)}")
 
         user_guess = input("\nWhat's your best guess? \n").upper()
         if user_guess in characters - used:
-            used.add(user_guess)  # when user chooses a letter
-            # add it to the used set
+            used.add(user_guess)
             if user_guess in player_letters:
                 player_letters.remove(user_guess)
-                print(" ")  # For correct user guesses.
-                # Adds letter(s) to word template
-                print(
-                    Colortext.YELLOW
-                    + Colortext.BOLD
-                    + "Phew! That WAS a lucky guess! It's in there!"
-                )
-                time.sleep(3)  # 3 second delay
+                print_color_text(Colortext.YELLOW, Colortext.BOLD, 
+                                "Phew! That WAS a lucky guess! It's in there!")
+                time.sleep(3)
             else:
-                lives = lives - 1
-                # Incorrect user choice and deducts life from tally
-                print(
-                    Colortext.YELLOW
-                    + Colortext.BOLD
-                    + "\nOh dear, oh dear. One step closer to the drop!..\n",
-                    user_guess,
-                    " 'ain't in the word my friend!",
-                )
-                time.sleep(4)  # 4 second delay
-        elif (
-                user_guess in used
-        ):  # When user chooses letter already used
-            # and identified as being in the used set
-            print(
-                Colortext.YELLOW
-                + Colortext.BOLD
-                + "\nTrying to pull a fast one are you?")
-            print(
-                Colortext.YELLOW
-                + Colortext.BOLD
-                + "\nYou can't use the same letter twice!")
-            time.sleep(3)  # 3 second delay
-        else:  # when user chooses non ascii qualified character.
-            print(
-                Colortext.YELLOW
-                + Colortext.BOLD
-                + "\nHehehe, Time to make better choices "
-                + name.upper() + ".")
-            print(
-                Colortext.YELLOW
-                + Colortext.BOLD
-                + "\n\nPreferably one's you haven't made already....")
-            time.sleep(4)  # 4 second delay
-        print(
-            "\033c", end=""
-        )  # clears the console - \033 s the ASCII escape character.
-    if lives == 0:
-        print(Colortext.RED + player_lives(lives))
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "\nOUCH!! I bet that stings a bit " + name.upper() + "!")
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "You didn't beat the hangman this time around,")
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "but in the wonderful realm of the digital world")
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "you may get the chance to play again...")
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "\nif you've the 'neck' for it that is.")
-        print("\nBy the way, the word you missed was: "
-              + Colortext.YELLOW + hang_word)
-        time.sleep(10)  # 12 second delay
-    else:
-        print(Colortext.RED + player_lives(lives))
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "\nWell done " + name.upper() +
-            "!! (You just cost me a fiver though...)")
-        print(
-            Colortext.GREEN
-            + Colortext.BOLD
-            + "I'll bet you fancy another try now?")
-        time.sleep(6)  # 4 second delay
+                lives -= 1
+                print_color_text(Colortext.YELLOW, Colortext.BOLD,
+                                f"\nOh dear, oh dear. One step closer to the drop!..\n{user_guess} 'ain't in the word my friend!")
+                time.sleep(4)
+        elif user_guess in used:
+            print_color_text(Colortext.YELLOW, Colortext.BOLD, 
+                            "\nTrying to pull a fast one are you?\nYou can't use the same letter twice!")
+            time.sleep(3)
+        else:
+            print_color_text(Colortext.YELLOW, Colortext.BOLD, 
+                            f"\nHehehe, Time to make better choices {name.upper()}.\n\nPreferably one's you haven't made already....")
+            time.sleep(4)
+        print("\033c", end="")
 
-    print(
-        "\033c", end=""
-    )  # clears the console - \033 is the ASCII escape character.
-    re_run()  # goes to game replay options
+    if lives == 0:
+        end_game_message(Colortext.RED, Colortext.GREEN, hang_word)
+    else:
+        victory_message(Colortext.RED, Colortext.GREEN)
+
+    print("\033c", end="")
+    re_run()
+
+
+def print_color_text(color1, color2, message):
+    """
+    Print a message with specified text and background colors.
+    """
+    print(color1 + color2 + message)
+
+
+def end_game_message(color1, color2, word):
+    """
+    Display the message when a player loses the game.
+    """
+    print(color1 + player_lives(0))
+    print_color_text(
+        color2, Colortext.BOLD, 
+        f"\nOUCH!! I bet that stings a bit {name.upper()}!"
+    )
+    print_color_text(
+        color2, Colortext.BOLD, 
+        ("You didn't beat the hangman this time around,"
+         "\nbut in the wonderful realm of the digital world"
+         "\nyou may get the chance to play again...")
+    )
+    print_color_text(
+        color2, Colortext.BOLD, 
+        "\nif you've the 'neck' for it that is."
+    )
+    print(f"\nBy the way, the word you missed was: {Colortext.YELLOW + word}")
+    time.sleep(10)
+
+
+def victory_message(color1, color2):
+    """
+    Display the victory message when a player wins the game.
+    """
+    print(color1 + player_lives(0))
+    print_color_text(
+        color2, Colortext.BOLD, 
+        f"\nWell done {name.upper()}!! "
+        "(You just cost me a fiver though...)"
+        "\nI'll bet you fancy another try now?"
+    )
+    time.sleep(6)
 
 
 def re_run():
