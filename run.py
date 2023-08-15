@@ -281,17 +281,18 @@ def re_run():
     Option to replay game function
     """
     again = pyfiglet.figlet_format(f"Try Again! \n{name.upper()}")
-    print(f"{Colortext.RED}{Colortext.BOLD}{again}")
-    
+    print(f"{Colortext.RED}{Colortext.BOLD}{again}")    
     msg_part1 = (f"{Colortext.GREEN}{Colortext.BOLD}"
                  "\n\n(Well, we had to include the statutory")
-    msg_part2 = (f"{Colortext.YELLOW}{Colortext.BOLD}'BIG LETTERS'{Colortext.GREEN}{Colortext.BOLD}"
-                 " at some point..)")
-    msg_part3 = ("\n\nNow, to give this fabulously designed game another shot"
-                 f"\n\nEnter {Colortext.YELLOW}{Colortext.BOLD}'y'{Colortext.GREEN}{Colortext.BOLD} for 'Lets do this!'"
-                 f" or..\n\nEnter {Colortext.YELLOW}{Colortext.BOLD}'n'{Colortext.GREEN}{Colortext.BOLD} for 'I'm a big Jessie'")
-    
-    print(msg_part1 + msg_part2 + msg_part3)
+    msg_part2 = (f"{Colortext.YELLOW}{Colortext.BOLD}'BIG LETTERS'"
+                 f"{Colortext.GREEN}{Colortext.BOLD} at some point..)")
+    msg_part3a = "\n\nNow, to give this fabulously designed game another shot"
+    msg_part3b = (f"\n\nEnter {Colortext.YELLOW}{Colortext.BOLD}'y'"
+                  f"{Colortext.GREEN}{Colortext.BOLD} for 'Lets do this!'")
+    msg_part3c = (f" or..\n\nEnter {Colortext.YELLOW}{Colortext.BOLD}'n'"
+                  f"{Colortext.GREEN}{Colortext.BOLD} for 'I'm a big Jessie'")
+    print(msg_part1 + msg_part2 + msg_part3a + msg_part3b + msg_part3c)
+
 
     choice = input("\n")
 
