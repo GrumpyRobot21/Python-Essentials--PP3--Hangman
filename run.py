@@ -33,7 +33,7 @@ def ask_name():
     """Request user's name and initiate game intro."""
     print("\033c", end='')
 
-    global name
+    global name # name variable given deliberate global scope for access in game
     name = input(f"{Colortext.BLUE}{Colortext.BOLD}What is your name? ")
 
     print("\033c", end='')
@@ -266,89 +266,52 @@ def re_run():
     """
     Option to replay game function
     """
-    again = pyfiglet.figlet_format("Try Again! \n" + name.upper() + "")
-    print(Colortext.RED + Colortext.BOLD + again)
+    again = pyfiglet.figlet_format(f"Try Again! \n{name.upper()}")
+    print(f"{Colortext.RED}{Colortext.BOLD}{again}")
     print(
-        Colortext.GREEN
-        + Colortext.BOLD
-        + "\n\n(Well, we had to include the statutory "
-        + Colortext.YELLOW
-        + Colortext.BOLD
-        + "'BIG LETTERS'"
-        + Colortext.GREEN
-        + Colortext.BOLD
-        + " at some point..)"
-        + "\n\nNow, to give this fabulously designed game another shot"
-        + "\n\nEnter "
-        + Colortext.YELLOW
-        + Colortext.BOLD
-        + "'y'"
-        + Colortext.GREEN
-        + Colortext.BOLD
-        + " for 'Lets do this!' or..\n\nEnter "
-        + Colortext.YELLOW
-        + Colortext.BOLD
-        + "'n'"
-        + Colortext.GREEN
-        + Colortext.BOLD
-        + " for 'I'm a big Jessie'"
+        f"{Colortext.GREEN}{Colortext.BOLD}"
+        "\n\n(Well, we had to include the statutory "
+        f"{Colortext.YELLOW}{Colortext.BOLD}'BIG LETTERS'{Colortext.GREEN}{Colortext.BOLD} at some point..)"
+        "\n\nNow, to give this fabulously designed game another shot"
+        f"\n\nEnter {Colortext.YELLOW}{Colortext.BOLD}'y'{Colortext.GREEN}{Colortext.BOLD} for 'Lets do this!'"
+        f" or..\n\nEnter {Colortext.YELLOW}{Colortext.BOLD}'n'{Colortext.GREEN}{Colortext.BOLD} for 'I'm a big Jessie'"
     )
 
     choice = input("\n")
 
     if choice == "y":  # Player elects to play again.
         print(
-            Colortext.RED
-            + Colortext.BOLD
-            + "\n\nIf at first you don't succeed blah blah etc.\n\n")
-        print("At least I get a chance to place another little bet!")
-
-        time.sleep(6)  # 4 second delay
-        print(
-            "\033c", end=""
-        )  # clears the console - \033 is the ASCII escape character.
+            f"{Colortext.RED}{Colortext.BOLD}"
+            "\n\nIf at first you don't succeed blah blah etc.\n\n"
+            "At least I get a chance to place another little bet!"
+        )
+        time.sleep(6)
+        print("\033c", end="")  # Clears the console.
         game_rules()
-    elif choice == "n":  # Player selects difficult challenge setting.
+
+    elif choice == "n":  # Player chooses not to play again.
         print(
-            Colortext.RED
-            + Colortext.BOLD
-            + "\n\nNever mind " + name.upper() + ", I understand.")
-        print(
-            Colortext.RED
-            + Colortext.BOLD
-            + "Once bitten, twice shy.")
-        print(
-            Colortext.RED
-            + Colortext.BOLD
-            + "\n\nIt takes a strong backbone to play ")
-        print(
-            Colortext.RED
-            + Colortext.BOLD
-            + "this game more than once.")
-        print(
-            Colortext.RED
-            + Colortext.BOLD
-            + "\n\nThat's ok if you don't have what it takes....")
-        time.sleep(6)  # 6 second delay
-        print(
-            "\033c", end=""
-        )  # clears the console - \033 is the ASCII escape character.
+            f"{Colortext.RED}{Colortext.BOLD}"
+            f"\n\nNever mind {name.upper()}, I understand."
+            "\n\nOnce bitten, twice shy."
+            "\n\nIt takes a strong backbone to play "
+            "this game more than once."
+            "\n\nThat's ok if you don't have what it takes...."
+        )
+        time.sleep(6)
+        print("\033c", end="")  # Clears the console.
         main()
+
     else:  # Error message for incorrect choice.
         print(
-            Colortext.BLUE
-            + Colortext.BOLD
-            + "\n\nSTILL not getting the 'hang' of this are you "
-            + name.upper() + "?")
-        print(
-            Colortext.BLUE
-            + Colortext.BOLD
-            + "\n\nLet's give this one more go shall we?")
-        time.sleep(4)  # 4 second delay
-        print(
-            "\033c", end=""
-        )  # clears the console - \033 s the ASCII escape character.
+            f"{Colortext.BLUE}{Colortext.BOLD}"
+            f"\n\nSTILL not getting the 'hang' of this are you {name.upper()}?"
+            "\n\nLet's give this one more go shall we?"
+        )
+        time.sleep(4)
+        print("\033c", end="")  # Clears the console.
         re_run()
+
 
 
 def player_lives(lives):
