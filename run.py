@@ -34,7 +34,7 @@ def ask_name():
     """Request user's name and initiate game intro."""
     print("\033c", end='')
 
-    global name  # name variable given deliberate global scope for access in game
+    global name  # name variable given deliberate global scope
     name = input(f"{Colortext.BLUE}{Colortext.BOLD}What is your name? ")
 
     print("\033c", end='')
@@ -42,7 +42,7 @@ def ask_name():
 
 
 def start_intro():
-    """Generates game options for player: intro to the game, difficulty, rules."""
+    """Generates options for player: intro to the game, difficulty, rules."""
     intro_art = f"""
 {Colortext.BOLD}{Colortext.YELLOW}
        ==============================================
@@ -67,16 +67,19 @@ def start_intro():
     welcome_part2 = base_color + " to ye olde game of HANGMAN!!!!"
     welcome_message = welcome_part1 + welcome_part2
     print(welcome_message)
-    instructions = f"""
-{Colortext.BLUE}{Colortext.BOLD}
-You must carefully select letters
-in the vain hope of avoiding the gallows
-by guessing the word before it's too late!
-Can you cheat the hangman's noose in time?
-Find out....if you dare!
+    enter_part1 = f"Enter {Colortext.GREEN}{Colortext.BOLD}'p'"
+    enter_part2 = f"{Colortext.BLUE}{Colortext.BOLD} to continue:\n"
 
-Enter {Colortext.GREEN}{Colortext.BOLD}'p'{Colortext.BLUE}{Colortext.BOLD} to continue:
-"""
+    instructions = f"""
+    {Colortext.BLUE}{Colortext.BOLD}
+    You must carefully select letters
+    in the vain hope of avoiding the gallows
+    by guessing the word before it's too late!
+    Can you cheat the hangman's noose in time?
+    Find out....if you dare!
+    \n
+    {enter_part1}{enter_part2}
+    """
     print(instructions)
 
     run = input("\n")
