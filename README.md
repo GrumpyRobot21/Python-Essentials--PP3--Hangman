@@ -145,35 +145,24 @@ User has to guess a letter within the word and input the letter (Letter choice i
  * [**Back to contents**](#table-of-contents)
 
 ## **Deployment**
-The project was deployed onto the Render platform. This was a full time replacement hosting solution as Heroku stopped provision of free hosting from November 2022. 
+* This project was deployed with Heroku using Code Institute's mock terminal as provided with the Python Essentials template.
 
-* Steps to deploy while hosted via the Render.com platform:
-  * Fork or clone this repository.
-  * Create a new web service in [Render](https://https://render.com).
-  * Select "New" and "Create new web service".
-  * Name the new app and complete all required configuration settings as follows.
-  * Add a Name - name setting with a meaningful name in the input
-  - Setting Name = Value
-  - Root Directory = blank
-  - Environment = Python 3
-  - Region =	Frankfurt (EU Central)
-  - Branch = main
+* To deploy:
 
-For those outside of Europe, a more localized region may be preferred.
+* Clone or fork this public repository
+* Create a Heroku account (if not already existing)
+* Create a new app with Heroku
+* In **Settings**, add 2 buildpacks:
+    - ```Python```
+    - ```NodeJS```
+    
+    Ensure the buildpacks are created in that order!
 
-You can also deploy from a different branch if required.
+* Allowing Heroku access to GitHub, link the new app to the relevant repository
+* Choose whether or not to enable **Automatic Deploys**. If enabled, the deployed app will update automatically with each push to GitHub
+* Click **Deploy**
 
-  * Set the Build Command - pip install -r requirements.txt && npm install
-  * Set the start Command -  node index.js
-
-  * Whilst still in "Settings", click "Advanced" then click "Add environment variable" and input the folloing. KEY: PORT, VALUE: 8000. 
-  * Back in Render click "Add secret file" This is where you will add the contents of the creds.json file. Click save when done.
-  * Click on "Auto Deploy" 
-  * Click "Create Web Service". 
-  * Wait for deployment. Watch the console for some activity, deployment can take up to 15 minutes to complete. 
-  * Render will now deploy the site.
-
-   * [**Back to contents**](#table-of-contents)
+ * [**Back to contents**](#table-of-contents)
 
   ## **Credits**
  * [Code Institute](https://codeinstitute.net/) plus the extended Code Institute community via Slack for their invaluable support. How to deploy to Render following the changes in the Heroku platform hosting options from November 2022.
